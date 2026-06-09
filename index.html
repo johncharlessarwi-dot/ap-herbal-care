@@ -13,44 +13,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-.nav-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
 
-.logo-image {
-  width: 50px;
-  height: 50px;          
-  border-radius: 50%;
-  object-fit: cover; 
-  
-  border: 2px solid #2e7d32;
-}
+    .logo-image {
+      width: 50px;
+      height: 50px;          
+      border-radius: 50%;
+      object-fit: cover; 
+      border: 2px solid #2e7d32;
+    }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav" id="navbar">
     <div class="nav-inner container">
-<a href="/" class="nav-logo" aria-label="A.P. Herbal Care Home">
-  <img src="./images/logo  ap herbal care.jpeg" alt="A.P. Herbal Care Logo" class="logo-image" />
-</a>
+      <a href="/" class="nav-logo" aria-label="A.P. Herbal Care Home">
+        <img src="./images/logo  ap herbal care.jpeg" alt="A.P. Herbal Care Logo" class="logo-image" />
+      </a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">Kuhusu</a></li>
         <li><a href="#services">Huduma</a></li>
+        <li><a href="#products">Bidhaa</a></li>
         <li><a href="#why">Kwa Nini Sisi</a></li>
         <li><a href="#contact" class="nav-cta">Wasiliana</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- HERO -->
   <header class="hero" id="home">
     <div class="hero-bg"></div>
     <div class="hero-leaves">
@@ -87,7 +85,6 @@
     </div>
   </header>
 
-  <!-- ABOUT -->
   <section class="section about" id="about">
     <div class="container about-grid">
       <div class="about-visual">
@@ -126,7 +123,6 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section class="section services" id="services">
     <div class="container">
       <div class="section-header">
@@ -143,7 +139,7 @@
         <div class="service-card">
           <div class="service-icon">🌿</div>
           <h3>Dawa za Mimea</h3>
-          <p>Dawa zilizotengezwa kutoka kwa mimea ya asili ya Tanzania na Afrika.</p>
+          <p>Dawa zilizotengezwa kutoka kwa mimea ya asili ya Tanzania nicotine na Afrika.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">💪</div>
@@ -169,7 +165,42 @@
     </div>
   </section>
 
-  <!-- WHY US -->
+  <section class="section products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Bidhaa Zetu</p>
+        <h2>Bidhaa za Asili</h2>
+        <p class="section-desc">Gundua bidhaa zetu bora kwa afya yako.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20FemiCare%20kwenye%20website.%20Naomba%20bei,%20maelezo%20na%20jinsi%20ya%20kuagiza." target="_blank" rel="noopener noreferrer">
+            <img src="./images/femicare.jpeg" alt="FemiCare">
+          </a>
+          <h3>FemiCare™</h3>
+          <p>Husaidia afya ya uke, miwasho, harufu mbaya na usafi wa maeneo ya siri ya mwanamke.</p>
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20FemiCare%20kwenye%20website.%20Naomba%20bei,%20maelezo%20na%20jinsi%20ya%20kuagiza." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
+        </div>
+        <div class="product-card">
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20Xpower%20Coffee%20kwenye%20website.%20Naomba%20bei,%20maelezo%20na%20jinsi%20ya%20kuagiza." target="_blank" rel="noopener noreferrer">
+            <img src="./images/xpower.jpeg" alt="Xpower Coffee">
+          </a>
+          <h3>Xpower Coffee™</h3>
+          <p>Coffee maalumu kwa wanaume inayosaidia nguvu, stamina na afya ya uzazi.</p>
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20Xpower%20Coffee%20kwenye%20website.%20Naomba%20bei,%20maelezo%20na%20jinsi%20ya%20kuagiza." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
+        </div>
+        <div class="product-card">
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20maelezo%20ya%20FemiCare%20kwenye%20website.%20Naomba%20bei%20na%20taarifa%20zaidi." target="_blank" rel="noopener noreferrer">
+            <img src="./images/femicare-details.jpeg" alt="FemiCare Details">
+          </a>
+          <h3>FemiCare Details™</h3>
+          <p>Pata maelezo zaidi kuhusu matumizi, faida na jinsi ya kutumia FemiCare.</p>
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20maelezo%20ya%20FemiCare%20kwenye%20website.%20Naomba%20bei%20na%20taarifa%20zaidi." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section why" id="why">
     <div class="container why-grid">
       <div class="why-text">
@@ -216,7 +247,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="section contact" id="contact">
     <div class="container">
       <div class="section-header">
@@ -257,7 +287,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
@@ -268,13 +297,5 @@
       <div class="footer-links">
         <a href="#about">Kuhusu</a>
         <a href="#services">Huduma</a>
-        <a href="#contact">Wasiliana</a>
-        <a href="https://www.facebook.com/profile.php?id=61558104611636" target="_blank" rel="noopener">Facebook</a>
-      </div>
-      <p class="footer-copy">© 2026 A.P Herbal Care · Moshi, Tanzania</p>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
-</body>
-</html>
+        <a href="#products">Bidhaa</a>
+        <a href="#contact">Wasiliana
