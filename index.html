@@ -27,6 +27,35 @@
       object-fit: cover; 
       border: 2px solid #2e7d32;
     }
+
+    /* Toleo jipya la mpangilio wa Makundi ya Bidhaa */
+    .product-categories-box {
+      background: #f1f8e9;
+      border-left: 5px solid #2e7d32;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+    }
+    .product-categories-box h3 {
+      color: #2e7d32;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .categories-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.8rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .categories-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -139,7 +168,7 @@
         <div class="service-card">
           <div class="service-icon">🌿</div>
           <h3>Dawa za Mimea</h3>
-          <p>Dawa zilizotengezwa kutoka kwa mimea ya asili ya Tanzania nicotine na Afrika.</p>
+          <p>Dawa zilizotengezwa kutoka kwa mimea ya asili ya Tanzania na Afrika.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">💪</div>
@@ -169,35 +198,52 @@
     <div class="container">
       <div class="section-header">
         <p class="section-label">Bidhaa Zetu</p>
-        <h2>Bidhaa za Asili</h2>
-        <p class="section-desc">Gundua bidhaa zetu bora kwa afya yako.</p>
+        <h2>Dawa na Virutubisho vya Asili</h2>
+        <p class="section-desc">Tunatoa suluhisho bora la afya kupitia tiba lishe asilia.</p>
       </div>
+
+      <div class="product-categories-box">
+        <h3>Dawa zetu zipo katika makundi tofauti tofauti:</h3>
+        <ul class="categories-list">
+          <li>🌱 1. Bidhaa za Kinga ya Mwili</li>
+          <li>🦴 2. Bidhaa za Kutibu Mifupa na Maungio</li>
+          <li>🩸 3. Bidhaa za Mzunguko wa Damu</li>
+          <li>🍏 4. Changamoto za Mmeng'enyo wa Chakula</li>
+          <li>🚹 5. Mfumo wa Uzazi (Wanawake na Wanaume)</li>
+          <li>⚖️ 6. Kutoa Sumu Mwilini & Kupunguza Uzito</li>
+          <li>👶 7. Changamoto za Watoto</li>
+        </ul>
+      </div>
+
       <div class="products-grid">
         <div class="product-card">
-          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20FemiCare%20kwenye%20website.%20Naomba%20bei,%20maelezo%20na%20jinsi%20ya%20kuagiza." target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20maelezo%20na%20bei%20ya%20Pure%20and%20Broken%20Ganoderma%20Spores." target="_blank" rel="noopener noreferrer">
+            <img src="./images/femicare-details.jpeg" alt="Pure and Broken Ganoderma Spores">
+          </a>
+          <h3>Pure & Broken Ganoderma Spores</h3>
+          <p>Uyoga mwekundu wa ajabu unaoongeza kinga ya mwili (CD4) haraka, kutoa sumu, na kusaidia wagonjwa wa sukari, saratani na maradhi sugu.</p>
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20maelezo%20na%20bei%20ya%20Pure%20and%20Broken%20Ganoderma%20Spores." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
+        </div>
+
+        <div class="product-card">
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20kufahamu%20zaidi%20kuhusu%20Refined%20Yunzhi%20Essence." target="_blank" rel="noopener noreferrer">
+            <img src="./images/xpower.jpeg" alt="Refined Yunzhi Essence">
+          </a>
+          <h3>Refined Yunzhi Essence</h3>
+          <p>Imarisha kinga ya mwili na usaidie ini na mapafu. Husaidia kusawazisha homoni za kike, kurekebisha mzunguko wa hedhi na kupunguza uvimbe (PID).</p>
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20kufahamu%20zaidi%20kuhusu%20Refined%20Yunzhi%20Essence." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
+        </div>
+
+        <div class="product-card">
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20FemiCare%20kwenye%20website.%20Naomba%20bei%20na%20maelezo." target="_blank" rel="noopener noreferrer">
             <img src="./images/femicare.jpeg" alt="FemiCare">
           </a>
           <h3>FemiCare™</h3>
-          <p>Husaidia afya ya uke, miwasho, harufu mbaya na usafi wa maeneo ya siri ya mwanamke.</p>
-          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20FemiCare%20kwenye%20website.%20Naomba%20bei,%20maelezo%20na%20jinsi%20ya%20kuagiza." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
-        </div>
-        <div class="product-card">
-          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20Xpower%20Coffee%20kwenye%20website.%20Naomba%20bei,%20maelezo%20na%20jinsi%20ya%20kuagiza." target="_blank" rel="noopener noreferrer">
-            <img src="./images/xpower.jpeg" alt="Xpower Coffee">
-          </a>
-          <h3>Xpower Coffee™</h3>
-          <p>Coffee maalumu kwa wanaume inayosaidia nguvu, stamina na afya ya uzazi.</p>
-          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20Xpower%20Coffee%20kwenye%20website.%20Naomba%20bei,%20maelezo%20na%20jinsi%20ya%20kuagiza." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
-        </div>
-        <div class="product-card">
-          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20maelezo%20ya%20FemiCare%20kwenye%20website.%20Naomba%20bei%20na%20taarifa%20zaidi." target="_blank" rel="noopener noreferrer">
-            <img src="./images/femicare-details.jpeg" alt="FemiCare Details">
-          </a>
-          <h3>FemiCare Details™</h3>
-          <p>Pata maelezo zaidi kuhusu matumizi, faida na jinsi ya kutumia FemiCare.</p>
-          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20maelezo%20ya%20FemiCare%20kwenye%20website.%20Naomba%20bei%20na%20taarifa%20zaidi." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
+          <p>Husaidia sana afya ya uke, kuondoa miwasho, harufu mbaya na kudumisha usafi wa maeneo ya siri ya mwanamke kwa njia asilia.</p>
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20FemiCare%20kwenye%20website.%20Naomba%20bei%20na%20maelezo." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -292,10 +338,19 @@
       <div class="footer-brand">
         <span class="logo-ap">A.P</span>
         <span class="logo-text">Herbal Care</span>
-        <p>Afya Asilia, Maisha Bora</p>
+        <p>Kliniki ya Dawa Za Asili na Tiba Lishe inayopatikana takriban mikoa yote Tanzania Bara na Visiwani.</p>
       </div>
       <div class="footer-links">
         <a href="#about">Kuhusu</a>
         <a href="#services">Huduma</a>
         <a href="#products">Bidhaa</a>
-        <a href="#contact">Wasiliana
+        <a href="#contact">Wasiliana</a>
+        <a href="https://www.facebook.com/profile.php?id=61558104611636" target="_blank" rel="noopener">Facebook</a>
+      </div>
+      <p class="footer-copy">© 2026 A.P Herbal Care · Moshi, Tanzania</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
