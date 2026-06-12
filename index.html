@@ -12,7 +12,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  
   <style>
+    /* Mitindo ya Awali Iliyokuwepo */
     .nav-logo {
       display: inline-flex;
       align-items: center;
@@ -28,7 +30,6 @@
       border: 2px solid #2e7d32;
     }
 
-    /* Toleo jipya la mpangilio wa Makundi ya Bidhaa */
     .product-categories-box {
       background: #f1f8e9;
       border-left: 5px solid #2e7d32;
@@ -56,6 +57,194 @@
       font-weight: 500;
       color: #333;
     }
+
+    /* ==========================================
+       VIPENGELE VIPYA (CSS MPYA)
+       ========================================== */
+
+    /* 1. WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      color: #fff;
+    }
+    .whatsapp-float svg {
+      width: 35px;
+      height: 35px;
+      fill: #fff;
+    }
+
+    /* Grid Layout ya Jumla kwa Sehemu Mpya */
+    .testimonials-grid, .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* 2. Testimonials (Ushuhuda) */
+    .testimonial-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2e7d32;
+      position: relative;
+    }
+    .testimonial-text {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .testimonial-user {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .user-avatar {
+      width: 50px;
+      height: 50px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .user-info h4 {
+      margin: 0;
+      color: #333;
+    }
+    .user-info span {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* 3. Blog Section */
+    .blog-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+    .blog-image {
+      width: 100%;
+      height: 200px;
+      background: #e8f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .blog-content {
+      padding: 1.5rem;
+    }
+    .blog-date {
+      font-size: 0.8rem;
+      color: #2e7d32;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .blog-content h3 {
+      margin: 0.5rem 0;
+      color: #333;
+    }
+    .blog-content p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .blog-readmore {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* 4. FAQ Section */
+    .faq-container {
+      max-width: 800px;
+      margin: 2rem auto 0 auto;
+    }
+    .faq-item {
+      background: #fff;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 1.2rem;
+      background: #f9f9f9;
+      cursor: pointer;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-question::after {
+      content: '➕';
+      font-size: 0.9rem;
+    }
+    .faq-item.active .faq-question::after {
+      content: '➖';
+    }
+    .faq-answer {
+      padding: 0 1.2rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: #555;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      padding: 1.2rem;
+      max-height: 500px;
+      border-top: 1px solid #eee;
+    }
+
+    /* 5. Google Maps */
+    .map-container {
+      width: 100%;
+      height: 400px;
+      margin-top: 3rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
   </style>
 </head>
 <body>
@@ -72,6 +261,9 @@
         <li><a href="#about">Kuhusu</a></li>
         <li><a href="#services">Huduma</a></li>
         <li><a href="#products">Bidhaa</a></li>
+        <li><a href="#testimonials">Ushuhuda</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#faq">Maswali</a></li>
         <li><a href="#why">Kwa Nini Sisi</a></li>
         <li><a href="#contact" class="nav-cta">Wasiliana</a></li>
       </ul>
@@ -243,7 +435,115 @@
           <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20FemiCare%20kwenye%20website.%20Naomba%20bei%20na%20maelezo." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
         </div>
       </div>
+    </div>
+  </section>
 
+  <section class="section testimonials" id="testimonials" style="background-color: #f9f9f9;">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Ushuhuda wetu</p>
+        <h2>Wanasemaje Wateja Wetu?</h2>
+        <p class="section-desc">Soma hadithi za ukweli kutoka kwa watu waliopata suluhisho kupitia tiba zetu.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Nilihangaika na changamoto ya PID na mzunguko wa hedhi kwa miaka miwili. Baada ya kutumia Refined Yunzhi Essence kutoka A.P Herbal Care, sasa niko salama kabisa na maumivu yameisha!"</p>
+          <div class="testimonial-user">
+            <div class="user-avatar">JM</div>
+            <div class="user-info">
+              <h4>Grace M.</h4>
+              <span>Moshi, Kilimanjaro</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Pure & Broken Ganoderma imenisaidia sana kuongeza nguvu ya mwili wangu. Nilikuwa nachoka haraka sana lakini sasa najisikia mwenye nguvu kila siku. Huduma zenu ni za uaminifu."</p>
+          <div class="testimonial-user">
+            <div class="user-avatar">JK</div>
+            <div class="user-info">
+              <h4>Juma K.</h4>
+              <span>Arusha</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"FemiCare ni kiboko! Inaondoa miwasho na harufu kwa haraka sana na ni ya asili kabisa bila kemikali. Nawashauri wanawake wenzangu wasisite kuwasiliana nao."</p>
+          <div class="testimonial-user">
+            <div class="user-avatar">AK</div>
+            <div class="user-info">
+              <h4>Asha K.</h4>
+              <span>Dar es Salaam</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section blog" id="blog">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Makala & Afya</p>
+        <h2>Blog ya Afya na Tiba Asili</h2>
+        <p class="section-desc">Pata elimu kuhusu afya, mtindo bora wa maisha na faida za mimea asilia.</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-image">🥦</div>
+          <div class="blog-content">
+            <span class="blog-date">Mei 15, 2026</span>
+            <h3>Faida 5 za Kusafisha Mwili (Detox)</h3>
+            <p>Kutoa sumu mwilini ni hatua ya kwanza kuelekea afya bora. Fahamu jinsi ya kufanya detox kwa kutumia mimea ya asili...</p>
+            <a href="#contact" class="blog-readmore">Soma Zaidi →</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image">🍄</div>
+          <div class="blog-content">
+            <span class="blog-date">Aprili 28, 2026</span>
+            <h3>Nguvu ya Uyoga Mwekundu wa Ganoderma</h3>
+            <p>Uyoga huu umekuwa ukitumika kwa karne nyingi kuongeza kinga ya mwili na kupambana na magonjwa sugu. Jifunze siri zake hapa...</p>
+            <a href="#contact" class="blog-readmore">Soma Zaidi →</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image">🍉</div>
+          <div class="blog-content">
+            <span class="blog-date">Machi 10, 2026</span>
+            <h3>Vyakula Vinavyosaidia Kusawazisha Homoni</h3>
+            <p>Changamoto za vurugu za homoni (Hormonal Imbalance) zimekuwa nyingi. Hivi hapa ni vyakula asilia vya kuongeza kwenye mlo wako...</p>
+            <a href="#contact" class="blog-readmore">Soma Zaidi →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq" style="background-color: #f1f8e9;">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">FAQ</p>
+        <h2>Maswali Yanayoulizwa Mara kwa Mara</h2>
+        <p class="section-desc">Majibu ya haraka kwa maswali ambayo wateja wetu wengi hupenda kuuliza.</p>
+      </div>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">Je, dawa zenu zina athari yoyote (Side Effects)?</div>
+          <div class="faq-answer">Hapana. Dawa zetu zote zimetengenezwa kwa mimea asilia 100% na hazina kemikali hatari, hivyo ni salama kabisa kutumia kulingana na maelekezo unayopewa.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Ofisi zenu zinapatikana wapi?</div>
+          <div class="faq-answer">Ofisi yetu kuu ipo Moshi, mkoani Kilimanjaro. Hata hivyo, tunatuma bidhaa na kutoa huduma kwa mikoa yote ya Tanzania Bara na Visiwani (Zanzibar).</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Inachukua muda gani kupokea mzigo nikiwa mkoani?</div>
+          <div class="faq-answer">Baada ya kukamilisha malipo, mzigo wako unatumwa kwa njia ya usafiri wa mabasi ya kuaminika au mashirika ya vifurushi na utaupata ndani ya masaa 24 hadi 48 kulingana na mkoa uliopo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Je, mmetajiliwa na mamlaka husika?</div>
+          <div class="faq-answer">Ndiyo, bidhaa na virutubisho vyetu vyote vimefanyiwa utafiti na vimeidhinishwa kuwa salama kwa matumizi ya binadamu.</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -326,6 +626,16 @@
           <p>Fuata ukurasa wetu</p>
         </div>
       </div>
+
+      <div class="map-container">
+        <iframe 
+          src="https://maps.google.com/maps?q=Moshi+Tanzania&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
       <div class="cta-strip">
         <p>Una swali? Piga simu sasa hivi!</p>
         <a href="tel:+255620354744" class="btn btn-primary btn-large">📞 0620 354 744</a>
@@ -351,6 +661,18 @@
     </div>
   </footer>
 
+  <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20ushauri%20na%20maelezo%20kuhusu%20afya." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Wasiliana nasi kupitia WhatsApp">
+    <svg viewBox="0 0 448 512">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+
   <script src="main.js"></script>
-</body>
-</html>
+  
+  <script>
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', () => {
+        const parent = item.parentElement;
+        if (parent.classList.contains('active')) {
+          parent.classList.remove('active');
+        } else
