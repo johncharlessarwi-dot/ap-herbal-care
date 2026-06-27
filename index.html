@@ -1,270 +1,834 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A.P Herbal Care – Tiba Asilia na Virutubisho Moshi, Tanzania</title>
-  <meta name="description" content="A.P Herbal Care inatoa huduma za tiba lishe, ushauri wa afya na dawa asilia kama Ganoderma na FemiCare mjini Moshi, Kilimanjaro." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  
-  <style>
-    /* Muundo wa Simu na Menu Msingi (Hifadhi nakala ya CSS yako) */
-    .mobile-menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: #2e7d32;
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      .mobile-menu-toggle { display: block; }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #fff;
-        padding: 1rem;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        z-index: 100;
-      }
-      .nav-links.active { display: flex; }
-    }
-    /* WhatsApp Floating Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: #fff;
-      border-radius: 50px;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      text-decoration: none;
-      transition: transform 0.3s ease;
-    }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      color: #fff;
-    }
-    .whatsapp-float svg {
-      width: 35px;
-      height: 35px;
-      fill: #fff;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A.P Herbal Care – Afya Asilia, Maisha Bora</title>
+  <meta name="description" content="A.P Herbal Care – Kliniki ya dawa za asili Moshi, Tanzania. Afya Asilia, Maisha Bora. Wasiliana: 0620 354 744" />
+  <meta property="og:title" content="A.P Herbal Care – Afya Asilia, Maisha Bora" />
+  <meta property="og:description" content="Kliniki ya dawa za asili inayosaidia watu wenye changamoto mbalimbali za kiafya." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  
+  <style>
+    /* Mitindo ya Awali Iliyokuwepo */
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .logo-image {
+      width: 50px;
+      height: 50px;          
+      border-radius: 50%;
+      object-fit: cover; 
+      border: 2px solid #2e7d32;
+    }
+
+    .product-categories-box {
+      background: #f1f8e9;
+      border-left: 5px solid #2e7d32;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+    }
+    .product-categories-box h3 {
+      color: #2e7d32;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .categories-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.8rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .categories-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    /* ==========================================
+        VIPENGELE VIPYA (CSS MPYA)
+       ========================================== */
+
+    /* 1. WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      color: #fff;
+    }
+    .whatsapp-float svg {
+      width: 35px;
+      height: 35px;
+      fill: #fff;
+    }
+
+    /* Grid Layout ya Jumla kwa Sehemu Mpya */
+    .testimonials-grid, .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* 2. Testimonials (Ushuhuda) */
+    .testimonial-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid #2e7d32;
+      position: relative;
+    }
+    .testimonial-text {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .testimonial-user {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .user-avatar {
+      width: 50px;
+      height: 50px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .user-info h4 {
+      margin: 0;
+      color: #333;
+    }
+    .user-info span {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* 3. Blog Section */
+    .blog-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+    .blog-image {
+      width: 100%;
+      height: 200px;
+      background: #e8f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .blog-content {
+      padding: 1.5rem;
+    }
+    .blog-date {
+      font-size: 0.8rem;
+      color: #2e7d32;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .blog-content h3 {
+      margin: 0.5rem 0;
+      color: #333;
+    }
+    .blog-content p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .blog-readmore {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #2e7d32;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* 4. FAQ Section */
+    .faq-container {
+      max-width: 800px;
+      margin: 2rem auto 0 auto;
+    }
+    .faq-item {
+      background: #fff;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 1.2rem;
+      background: #f9f9f9;
+      cursor: pointer;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-question::after {
+      content: '➕';
+      font-size: 0.9rem;
+    }
+    .faq-item.active .faq-question::after {
+      content: '➖';
+    }
+    .faq-answer {
+      padding: 0 1.2rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-out;
+      color: #555;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      padding: 1.2rem;
+      max-height: 500px;
+      border-top: 1px solid #eee;
+    }
+
+    /* 5. Appointment/Consultation Form Section */
+    .consultation-box {
+      max-width: 600px;
+      margin: 3rem auto 0 auto;
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-bottom: 5px solid #2e7d32;
+    }
+    .consultation-box h3 {
+      color: #2e7d32;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .consultation-box p {
+      text-align: center;
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #333;
+      font-size: 0.9rem;
+    }
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-wrapper .form-icon {
+      position: absolute;
+      left: 15px;
+      color: #2e7d32;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 12px 12px 45px;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+    .form-control:focus {
+      border-color: #2e7d32;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+    }
+    textarea.form-control {
+      padding-left: 45px;
+      resize: vertical;
+      min-height: 100px;
+    }
+    .textarea-icon {
+      top: 15px;
+    }
+    .btn-submit {
+      width: 100%;
+      background: #2e7d32;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .btn-submit:hover {
+      background: #1b5e20;
+    }
+
+    /* 6. Google Maps */
+    .map-container {
+      width: 100%;
+      height: 400px;
+      margin-top: 3rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAWIGESHONI KUU (NAVIGATION BAR) -->
-  <nav class="navbar">
-    <div class="container nav-inner">
-      <a href="index.html" class="logo">
-        <span class="logo-accent">A.P</span> Herbal Care
-      </a>
-      
-      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Fungua Menu">☰</button>
-      
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active">Mwanzo</a></li>
-        <li><a href="huduma.html">Huduma</a></li>
-        <li><a href="bidhaa.html">Bidhaa</a></li>
-        <li><a href="wasiliana.html" class="nav-cta">Wasiliana</a></li>
-      </ul>
-    </div>
-  </nav>
+  <nav class="nav" id="navbar">
+    <div class="nav-inner container">
+      <a href="/" class="nav-logo" aria-label="A.P. Herbal Care Home">
+        <img src="./images/logo  ap herbal care.jpeg" alt="A.P. Herbal Care Logo" class="logo-image" />
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Kuhusu</a></li>
+        <li><a href="#services">Huduma</a></li>
+        <li><a href="#products">Bidhaa</a></li>
+        <li><a href="#testimonials">Ushuhuda</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#faq">Maswali</a></li>
+        <li><a href="#why">Kwa Nini Sisi</a></li>
+        <li><a href="#contact" class="nav-cta">Wasiliana</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <!-- HERO SECTION -->
-  <header class="hero">
-    <div class="container hero-inner">
-      <span class="hero-tag">Afya ya Asili, Uzima wa Kudumu</span>
-      <h1>Gundua Nguvu ya Tiba Lishe na <span class="text-highlight">Mimea Asilia</span></h1>
-      <p class="hero-lead">Tunatoa suluhisho la uhakika na salama kwa changamoto mbalimbali za kiafya kwa kutumia virutubisho na mimea vilivyothibitishwa.</p>
-      <div class="hero-actions">
-        <a href="bidhaa.html" class="btn btn-primary">Tazama Bidhaa</a>
-        <a href="wasiliana.html" class="btn btn-secondary">Pata Ushauri Bure</a>
-      </div>
-    </div>
-  </header>
+  <header class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-leaves">
+      <div class="leaf leaf-1">🌿</div>
+      <div class="leaf leaf-2">🍃</div>
+      <div class="leaf leaf-3">🌱</div>
+      <div class="leaf leaf-4">🍀</div>
+    </div>
+    <div class="container hero-content">
+      <p class="hero-eyebrow">Afya Asilia · Maisha Bora</p>
+      <h1 class="hero-title">
+        Dawa za Asili<br/>
+        <em>Kwa Maisha Bora</em>
+      </h1>
+      <p class="hero-sub">
+        Kliniki ya dawa za asili inayosaidia watu wenye changamoto mbalimbali za kiafya.
+        Tunaamini nguvu ya mimea na asili katika kuponya.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Piga Simu Sasa</a>
+        <a href="#services" class="btn btn-outline">Angalia Huduma</a>
+      </div>
+      <div class="hero-badge">
+        <div class="badge-icon">🌿</div>
+        <div>
+          <strong>100% Asili</strong>
+          <span>Dawa za Mimea ya Asili</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
 
-  <!-- SEHEMU YA HUDUMA (SERVICES SECTION) -->
-  <section class="services-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Huduma Zetu</h2>
-        <p>Tunajivunia kutoa huduma bora na za kipekee zilizolenga kuboresha afya yako kwa ujumla.</p>
-      </div>
+  <section class="section about" id="about">
+    <div class="container about-grid">
+      <div class="about-visual">
+        <div class="about-circle">
+          <div class="circle-inner">
+            <span class="big-leaf">🌿</span>
+            <span class="circle-text">Asili</span>
+          </div>
+        </div>
+        <div class="about-stat-card">
+          <strong>100%</strong>
+          <span>Dawa za Asili</span>
+        </div>
+        <div class="about-stat-card about-stat-card--2">
+          <strong>Moshi</strong>
+          <span>Tanzania</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-label">Kuhusu Sisi</p>
+        <h2>A.P Herbal Care ni nini?</h2>
+        <p>
+          <strong>A.P Herbal Care</strong> ni kliniki ya dawa za asili iliyoanzishwa Moshi, Tanzania.
+          Tunajishughulisha na kusaidia watu wenye changamoto mbalimbali za kiafya kwa kutumia
+          nguvu ya mimea na dawa za asili zilizothibitishwa.
+        </p>
+        <p>
+          Falsafa yetu ni rahisi: <em>"Afya Asilia, Maisha Bora."</em> Tunaamini kwamba asili
+          ina jibu kwa matatizo mengi ya kiafya, na kazi yetu ni kukusaidia kupata afya hiyo.
+        </p>
+        <a href="https://www.facebook.com/profile.php?id=61558104611636" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Fuata kwenye Facebook
+        </a>
+      </div>
+    </div>
+  </section>
 
-      <div class="services-grid">
-        <!-- 1. Ushauri wa Kiafya -->
-        <div class="service-card">
-          <div class="service-icon">🩺</div>
-          <h3>Ushauri wa Kiafya</h3>
-          <p>Kupata ushauri wa kitaalamu kuhusu afya yako na jinsi ya kutumia dawa za asili kwa usalama.</p>
-          <a href="ushauri-wa-kiafya.html" class="blog-readmore">Soma Zaidi →</a>
-        </div>
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Huduma Zetu</p>
+        <h2>Tunasaidia Nini?</h2>
+        <p class="section-desc">Tunashughulikia changamoto mbalimbali za kiafya kwa njia ya asili na salama.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🩺</div>
+          <h3>Ushauri wa Kiafya</h3>
+          <p>Kupata ushauri wa kitaalamu kuhusu afya yako na jinsi ya kutumia dawa za asili.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🌿</div>
+          <h3>Dawa za Mimea</h3>
+          <p>Dawa zilizotengezwa kutoka kwa mimea ya asili ya Tanzania nicotine na Afrika.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💪</div>
+          <h3>Nguvu & Ustawi</h3>
+          <p>Suluhisho za asili kwa nguvu ya mwili, afya ya jumla na ustawi wa akili.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">❤️</div>
+          <h3>Matibabu ya Maalum</h3>
+          <p>Kushughulikia changamoto maalum za kiafya kwa mtazamo wa asili.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📞</div>
+          <h3>Mashauriano ya Simu</h3>
+          <p>Unaweza kupata ushauri kupitia simu bila kulazimika kuja ofisini.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏡</div>
+          <h3>Ufuatiliaji wa Mgonjwa</h3>
+          <p>Tunafuatilia maendeleo yako na kukusaidia katika safari yako ya kupona.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- 2. Dawa za Mimea -->
-        <div class="service-card">
-          <div class="service-icon">🌿</div>
-          <h3>Dawa za Mimea</h3>
-          <p>Dawa zilizotengezwa kutoka kwa mimea ya asili ya Tanzania na Afrika kwa ajili ya uponyaji wa haraka.</p>
-          <a href="dawa-za-mimea.html" class="blog-readmore">Soma Zaidi →</a>
-        </div>
+  <section class="section products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Bidhaa Zetu</p>
+        <h2>Dawa na Virutubisho vya Asili</h2>
+        <p class="section-desc">Tunatoa suluhisho bora la afya kupitia tiba lishe asilia.</p>
+      </div>
 
-        <!-- 3. Nguvu & Ustawi -->
-        <div class="service-card">
-          <div class="service-icon">💪</div>
-          <h3>Nguvu & Ustawi</h3>
-          <p>Suluhisho za asili kwa nguvu ya mwili, afya ya jumla na kuondoa uchovu sugu mwilini.</p>
-          <a href="nguvu-na-ustawi.html" class="blog-readmore">Soma Zaidi →</a>
-        </div>
+      <div class="product-categories-box">
+        <h3>Dawa zetu zipo katika makundi tofauti tofauti:</h3>
+        <ul class="categories-list">
+          <li>🌱 1. Bidhaa za Kinga ya Mwili</li>
+          <li>🦴 2. Bidhaa za Kutibu Mifupa na Maungio</li>
+          <li>🩸 3. Bidhaa za Mzunguko wa Damu</li>
+          <li>🍏 4. Changamoto za Mmeng'enyo wa Chakula</li>
+          <li>🚹 5. Mfumo wa Uzazi (Wanawake na Wanaume)</li>
+          <li>⚖️ 6. Kutoa Sumu Mwilini & Kupunguza Uzito</li>
+          <li>👶 7. Changamoto za Watoto</li>
+        </ul>
+      </div>
 
-        <!-- 4. Matibabu Maalum -->
-        <div class="service-card">
-          <div class="service-icon">❤️</div>
-          <h3>Matibabu Maalum</h3>
-          <p>Kushughulikia changamoto maalum za kiafya (kama PID, Hormonal Imbalance n.k) kwa mtazamo wa asili.</p>
-          <a href="matibabu-maalum.html" class="blog-readmore">Soma Zaidi →</a>
-        </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20maelezo%20na%20bei%20ya%20Pure%20and%20Broken%20Ganoderma%20Spores." target="_blank" rel="noopener noreferrer">
+            <img src="./images/femicare-details.jpeg" alt="Pure and Broken Ganoderma Spores">
+          </a>
+          <h3>Pure & Broken Ganoderma Spores</h3>
+          <p>Uyoga mwekundu wa ajabu unaoongeza kinga ya mwili (CD4) haraka, kutoa sumu, na kusaidia wagonjwa wa sukari, saratani na maradhi sugu.</p>
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20maelezo%20na%20bei%20ya%20Pure%20and%20Broken%20Ganoderma%20Spores." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
+        </div>
 
-        <!-- 5. Mashauriano ya Simu -->
-        <div class="service-card">
-          <div class="service-icon">📞</div>
-          <h3>Mashauriano ya Simu</h3>
-          <p>Unaweza kupata ushauri na huduma zetu zote kupitia simu popote ulipo Tanzania nzima.</p>
-          <a href="mashauriano-ya-simu.html" class="blog-readmore">Soma Zaidi →</a>
-        </div>
+        <div class="product-card">
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20kufahamu%20zaidi%20kuhusu%20Refined%20Yunzhi%20Essence." target="_blank" rel="noopener noreferrer">
+            <img src="./images/xpower.jpeg" alt="Refined Yunzhi Essence">
+          </a>
+          <h3>Refined Yunzhi Essence</h3>
+          <p>Imarisha kinga ya mwili na usaidie ini na mapafu. Husaidia kusawazisha homoni za kike, kurekebisha mzunguko wa hedhi na kupunguza uvimbe (PID).</p>
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20kufahamu%20zaidi%20kuhusu%20Refined%20Yunzhi%20Essence." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
+        </div>
 
-        <!-- 6. Ufuatiliaji wa Mgonjwa -->
-        <div class="service-card">
-          <div class="service-icon">🏡</div>
-          <h3>Ufuatiliaji wa Mgonjwa</h3>
-          <p>Tunafuatilia maendeleo ya afya yako hatua kwa hatua baada ya kuanza kutumia tiba zetu.</p>
-          <a href="ufuatiliaji-wa-mgonjwa.html" class="blog-readmore">Soma Zaidi →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="product-card">
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20FemiCare%20kwenye%20website.%20Naomba%20bei%20na%20maelezo." target="_blank" rel="noopener noreferrer">
+            <img src="./images/femicare.jpeg" alt="FemiCare">
+          </a>
+          <h3>FemiCare™</h3>
+          <p>Husaidia sana afya ya uke, kuondoa miwasho, harufu mbaya na kudumisha usafi wa maeneo ya siri ya mwanamke kwa njia asilia.</p>
+          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nimeona%20FemiCare%20kwenye%20website.%20Naomba%20bei%20na%20maelezo." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- SEHEMU YA BIDHAA ZILIZOCHAGULIWA (FEATURED PRODUCTS) -->
-  <section class="products-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Bidhaa Zetu Bora</h2>
-        <p>Hizi ni baadhi ya tiba lishe zetu zinazoongoza kwa kuleta matokeo bora kwa wateja wetu.</p>
-      </div>
+  <section class="section testimonials" id="testimonials" style="background-color: #f9f9f9;">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Ushuhuda wetu</p>
+        <h2>Wanasemaje Wateja Wetu?</h2>
+        <p class="section-desc">Soma hadithi za ukweli kutoka kwa watu waliopata suluhisho kupitia tiba zetu.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Nilihangaika na changamoto ya PID na mzunguko wa hedhi kwa miaka miwili. Baada ya kutumia Refined Yunzhi Essence kutoka A.P Herbal Care, sasa niko salama kabisa na maumivu yameisha!"</p>
+          <div class="testimonial-user">
+            <div class="user-avatar">JM</div>
+            <div class="user-info">
+              <h4>Grace M.</h4>
+              <span>Moshi, Kilimanjaro</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Pure & Broken Ganoderma imenisaidia sana kuongeza nguvu ya mwili wangu. Nilikuwa nachoka haraka sana lakini sasa najisikia mwenye nguvu kila siku. Huduma zenu ni za uaminifu."</p>
+          <div class="testimonial-user">
+            <div class="user-avatar">JK</div>
+            <div class="user-info">
+              <h4>Juma K.</h4>
+              <span>Arusha</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">"FemiCare ni kiboko! Inaondoa miwasho na harufu kwa haraka sana na ni ya asili kabisa bila kemikali. Nawashauri wanawake wenzangu wasisite kuwasiliana nao."</p>
+          <div class="testimonial-user">
+            <div class="user-avatar">AK</div>
+            <div class="user-info">
+              <h4>Asha K.</h4>
+              <span>Dar es Salaam</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="products-grid">
-        <!-- Bidhaa ya 1 -->
-        <div class="product-card">
-          <img src="./images/femicare-details.jpeg" alt="Pure and Broken Ganoderma Spores">
-          <h3>Pure & Broken Ganoderma Spores</h3>
-          <p>Uyoga mwekundu asilia unaosaidia kuongeza kinga ya mwili kwa haraka, kutoa sumu na kulinda viungo vya ndani.</p>
-          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20Ganoderma%20Spores." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
-        </div>
+  <section class="section blog" id="blog">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Makala & Afya</p>
+        <h2>Blog ya Afya na Tiba Asili</h2>
+        <p class="section-desc">Pata elimu kuhusu afya, mtindo bora wa maisha na faida za mimea asilia.</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-image">🥦</div>
+          <div class="blog-content">
+            <span class="blog-date">Mei 15, 2026</span>
+            <h3>Faida 5 za Kusafisha Mwili (Detox)</h3>
+            <p>Kutoa sumu mwilini ni hatua ya kwanza kuelekea afya bora. Fahamu jinsi ya kufanya detox kwa kutumia mimea ya asili...</p>
+            <a href="#contact" class="blog-readmore">Soma Zaidi →</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image">🍄</div>
+          <div class="blog-content">
+            <span class="blog-date">Aprili 28, 2026</span>
+            <h3>Nguvu ya Uyoga Mwekundu wa Ganoderma</h3>
+            <p>Uyoga huu umekuwa ukitumika kwa karne nyingi kuongeza kinga ya mwili na kupambana na magonjwa sugu. Jifunze siri zake hapa...</p>
+            <a href="#contact" class="blog-readmore">Soma Zaidi →</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image">🍉</div>
+          <div class="blog-content">
+            <span class="blog-date">Machi 10, 2026</span>
+            <h3>Vyakula Vinavyosaidia Kusawazisha Homoni</h3>
+            <p>Changamoto za vurugu za homoni (Hormonal Imbalance) zimekuwa nyingi. Hivi hapa ni vyakula asilia vya kuongeza kwenye mlo wako...</p>
+            <a href="#contact" class="blog-readmore">Soma Zaidi →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Bidhaa ya 2 -->
-        <div class="product-card">
-          <img src="./images/xpower.jpeg" alt="Refined Yunzhi Essence">
-          <h3>Refined Yunzhi Essence</h3>
-          <p>Inafaa sana kwa kusafisha mfumo wa uzazi wa mwanamke, kuondoa changamoto ya PID na uvimbe.</p>
-          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20Refined%20Yunzhi%20Essence." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
-        </div>
+  <section class="section faq" id="faq" style="background-color: #f1f8e9;">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">FAQ</p>
+        <h2>Maswali Yanayoulizwa Mara kwa Mara</h2>
+        <p class="section-desc">Majibu ya haraka kwa maswali ambayo wateja wetu wengi hupenda kuuliza.</p>
+      </div>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">Je, dawa zenu zina athari yoyote (Side Effects)?</div>
+          <div class="faq-answer">Hapana. Dawa zetu zote zimetengenezwa kwa mimea asilia 100% na hazina kemikali hatari, hivyo ni salama kabisa kutumia kulingana na maelekezo unayopewa ya tiba lishe.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Ofisi zenu zinapatikana wapi?</div>
+          <div class="faq-answer">Ofisi yetu kuu ipo Moshi, mkoani Kilimanjaro. Hata hivyo, tunatuma bidhaa na kutoa huduma kwa mikoa yote ya Tanzania Bara na Visiwani (Zanzibar) kwa uaminifu mkubwa.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Inachukua muda gani kupokea mzigo nikiwa mkoani?</div>
+          <div class="faq-answer">Baada ya kukamilisha malipo na maelezo yako, mzigo wako unatumwa kwa njia ya usafiri wa mabasi ya kuaminika au mashirika ya vifurushi na utaupata ndani ya masaa 24 hadi 48 kulingana na mkoa uliopo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Je, mmesajiliwa na mamlaka husika?</div>
+          <div class="faq-answer">Ndiyo, bidhaa, dawa na virutubisho vyetu vyote vimefanyiwa utafiti wa kina na vimeidhinishwa kuwa salama kabisa kwa matumizi ya binadamu bila kuleta madhara yoyote.</div>
+        </div>
+      </div>
 
-        <!-- Bidhaa ya 3 -->
-        <div class="product-card">
-          <img src="./images/femicare.jpeg" alt="FemiCare">
-          <h3>FemiCare™</h3>
-          <p>Suluhisho bora kwa usafi, kuondoa miwasho, fangasi sugu na harufu mbaya katika maeneo ya siri ya mwanamke.</p>
-          <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20FemiCare." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Agiza kwa WhatsApp</a>
-        </div>
-      </div>
+      <div class="consultation-box">
+        <h3>Omba Tiba na Ushauri wa Kiafya</h3>
+        <p>Jaza fomu hii kwa usahihi, na wataalamu wetu watakuandalia suluhisho kisha kuwasiliana nawe haraka iwezekanavyo.</p>
+        
+        <form id="herbalConsultationForm">
+          <div class="form-group">
+            <label for="fullName">Jina Lako Kamili</label>
+            <div class="input-wrapper">
+              <svg class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <input type="text" id="fullName" class="form-control" placeholder="Mfano: John Charles" required />
+            </div>
+          </div>
 
-      <div style="text-align: center; margin-top: 3rem;">
-        <a href="bidhaa.html" class="btn btn-secondary">Tazama Bidhaa Zote →</a>
-      </div>
-    </div>
-  </section>
+          <div class="form-group">
+            <label for="phoneNumber">Namba yako ya Simu (WhatsApp)</label>
+            <div class="input-wrapper">
+              <svg class="form-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <input type="tel" id="phoneNumber" class="form-control" placeholder="Mfano: 0620354744" required />
+            </div>
+          </div>
 
-  <!-- SEHEMU YA SHUHUDA (TESTIMONIALS) -->
-  <section class="testimonials-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Wanasemaje Kuhusu Sisi?</h2>
-        <p>Sikia kutoka kwa watu waliotumia bidhaa zetu na kufanikiwa kurejesha afya zao.</p>
-      </div>
+          <div class="form-group">
+            <label for="healthIssue">Eleza Changamoto ya Afya Inayokusumbua</label>
+            <div class="input-wrapper">
+              <svg class="form-icon textarea-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+              <textarea id="healthIssue" class="form-control" placeholder="Eleza kwa ufupi dalili au changamoto yako (Mfano: PID, Nguvu za kiume, maumivu ya mgongo na mifupa n.k)..." required></textarea>
+            </div>
+          </div>
 
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <p class="testimonial-text">"Nilitumia Femicare na Yunzhi baada ya kusumbuka na PID kwa miaka miwili. Namshukuru sana Tabibu wa A.P Herbal Care, sasa niko salama kabisa!"</p>
-          <h4 class="testimonial-author">Amina S. – Moshi</h4>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-text">"Ganoderma Spores imenisaidia sana kushusha sukari na kuongeza nguvu ya mwili. Nilikuwa nachoka sana, lakini sasa nafanya kazi zangu vizuri."</p>
-          <h4 class="testimonial-author">Mzee Joseph – Kilimanjaro</h4>
-        </div>
-      </div>
-    </div>
-  </section>
+          <button type="submit" class="btn-submit">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Tuma Ujumbe WhatsApp
+          </button>
+        </form>
+      </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="logo" style="color:#fff;"><span class="logo-accent">A.P</span> Herbal Care</a>
-        <p>Tunatoa huduma bora za afya kwa kutumia tiba lishe na virutubisho asilia vilivyothibitishwa.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Kurasa</h4>
-        <ul>
-          <li><a href="index.html">Mwanzo</a></li>
-          <li><a href="huduma.html">Huduma</a></li>
-          <li><a href="bidhaa.html">Bidhaa</a></li>
-          <li><a href="wasiliana.html">Wasiliana</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="container" style="text-align: center; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
-      <p>© 2026 A.P Herbal Care · Moshi,kilimanjaro, Tanzania</p>
-    </div>
-  </footer>
+    </div>
+  </section>
 
-  <!-- WHATSAPP FLOATING BUTTON -->
-  <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20ushauri%20na%20maelezo%20kuhusu%20afya." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Wasiliana nasi kupitia WhatsApp">
-    <svg viewBox="0 0 448 512">
-      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-    </svg>
-  </a>
+  <section class="section why" id="why">
+    <div class="container why-grid">
+      <div class="why-text">
+        <p class="section-label">Kwa Nini Sisi?</p>
+        <h2>Chagua Asili,<br/>Chagua Maisha</h2>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-icon">✅</div>
+            <div>
+              <strong>Dawa za Asili 100%</strong>
+              <p>Hakuna kemikali hatari. Mimea ya asili pekee.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-icon">✅</div>
+            <div>
+              <strong>Uzoefu wa Kitaalamu</strong>
+              <p>Timu yenye uzoefu na ujuzi wa dawa za asili.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-icon">✅</div>
+            <div>
+              <strong>Bei Nafuu</strong>
+              <p>Huduma bora kwa bei inayofaa kwa kila mtu.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-icon">✅</div>
+            <div>
+              <strong>Imani na Uaminifu</strong>
+              <p>Tunajengwa juu ya imani na uaminifu kwa wateja wetu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="why-card">
+          <div class="quote-mark">"</div>
+          <p><em>Afya Asilia, Maisha Bora</em> — hii si slogan tu, ni ahadi yetu kwako.</p>
+          <div class="quote-author">— A.P Herbal Care Team</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- SCRIPT YA MENU KUTUMIKA KWENYE SIMU (MOBILE RESPONSIUVE) -->
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Wasiliana Nasi</p>
+        <h2>Tuko Hapa Kukusaidia</h2>
+        <p class="section-desc">Usisita kuwasiliana nasi. Tutafurahi kusikia kutoka kwako.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <h3>Simu</h3>
+          <a href="tel:+255620354744" class="contact-link">0620 354 744</a>
+          <p>Jumatatu – Jumamosi, 8am – 6pm</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>Barua Pepe</h3>
+          <a href="mailto:augustinojacob4@gmail.com" class="contact-link">augustinojacob4@gmail.com</a>
+          <p>Tunajibu ndani ya masaa 24</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Mahali</h3>
+          <p class="contact-link">Moshi, Kilimanjaro</p>
+          <p>Tanzania</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📘</div>
+          <h3>Facebook</h3>
+          <a href="https://www.facebook.com/profile.php?id=61558104611636" target="_blank" rel="noopener" class="contact-link">Herbal Clinic TZ</a>
+          <p>Fuata ukurasa wetu</p>
+        </div>
+      </div>
 
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.5936746811466!2d37.3387803!3d-3.3518175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185dd9aa3a0df477%3A0x600b65f7c1bb5727!2sMoshi!5e0!3m2!1sen!2stz!4v1710000000000!5m2!1sen!2stz" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
 
-    // Kufunga menu pindi link inapobonyezwa
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
-    });
-  </script>
+      <div class="cta-strip">
+        <p>Una swali? Piga simu sasa hivi!</p>
+        <a href="tel:+255620354744" class="btn btn-primary btn-large">📞 0620 354 744</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-ap">A.P</span>
+        <span class="logo-text">Herbal Care</span>
+        <p>Kliniki ya Dawa Za Asili na Tiba Lishe inayopatikana takriban mikoa yote Tanzania Bara na Visiwani.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">Kuhusu</a>
+        <a href="#services">Huduma</a>
+        <a href="#products">Bidhaa</a>
+        <a href="#contact">Wasiliana</a>
+        <a href="https://www.facebook.com/profile.php?id=61558104611636" target="_blank" rel="noopener">Facebook</a>
+      </div>
+      <p class="footer-copy">© 2026 A.P Herbal Care · Moshi, Tanzania</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/255620354744?text=Hello%20A.P%20Herbal%20Care,%20nahitaji%20ushauri%20na%20maelezo%20kuhusu%20afya." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Wasiliana nasi kupitia WhatsApp">
+    <svg viewBox="0 0 448 512">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+
+  <script src="main.js"></script>
+  
+  <script>
+    // 1. SCRIPT YA FAQ (MASWALI NA MAJIBU)
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', () => {
+        const parent = item.parentElement;
+        
+        // Kufunga maswali mengine yote yaliyokuwa wazi
+        document.querySelectorAll('.faq-item').forEach(child => {
+          if (child !== parent) {
+            child.classList.remove('active');
+          }
+        });
+
+        // Kufungua au kufunga swali lililobonyezwa
+        parent.classList.toggle('active');
+      });
+    });
+
+    // 2. SCRIPT YA FOMU YA AFYA KWENDA WHATSAPP DIRECT
+    document.getElementById('herbalConsultationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('fullName').value;
+      const phone = document.getElementById('phoneNumber').value;
+      const issue = document.getElementById('healthIssue').value;
+      
+      const whatsappNumber = "255620354744";
+      const message = `Hello A.P Herbal Care, naomba ushauri wa kiafya.\n\n*Jina:* ${name}\n*Simu:* ${phone}\n*Changamoto ya Afya:* ${issue}`;
+      
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+      
+      window.open(whatsappUrl, '_blank');
+    });
+  </script>
 </body>
-</html>
+</html>       
