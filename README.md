@@ -27,7 +27,7 @@ A.P Herbal Care is a static website project created for a herbal care business b
 <img src="https://img.shields.io/badge/💬_CONTACT_ON_WHATSAPP-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Contact on WhatsApp"/>
 </a>
 
-<a href="mailto:augustin o jacob4@gmail.com">
+<a href="mailto:augustinojacob4@gmail.com">
 <img src="https://img.shields.io/badge/✉️_SEND_AN_EMAIL-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email contact"/>
 </a>
 
