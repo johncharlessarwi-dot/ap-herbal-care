@@ -221,39 +221,46 @@
   <script src="main.js"></script>
   
   <script>
-    // 1. SCRIPT YA FAQ (MASWALI NA MAJIBU)
-    document.querySelectorAll('.faq-question').forEach(item => {
+    // Optional FAQ widget: pages without FAQ markup should remain error-free.
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(item => {
       item.addEventListener('click', () => {
         const parent = item.parentElement;
-        
-        // Kufunga maswali mengine yote yaliyokuwa wazi
         document.querySelectorAll('.faq-item').forEach(child => {
-          if (child !== parent) {
-            child.classList.remove('active');
-          }
+          if (child !== parent) child.classList.remove('active');
         });
-
-        // Kufungua au kufunga swali lililobonyezwa
-        parent.classList.toggle('active');
+        parent?.classList.toggle('active');
       });
     });
 
-    // 2. SCRIPT YA FOMU YA AFYA KWENDA WHATSAPP DIRECT
-    document.getElementById('herbalConsultationForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const name = document.getElementById('fullName').value;
-      const phone = document.getElementById('phoneNumber').value;
-      const issue = document.getElementById('healthIssue').value;
-      
-      const whatsappNumber = "255620354744";
-      const message = `Hello A.P Herbal Care, naomba ushauri wa kiafya.\n\n*Jina:* ${name}\n*Simu:* ${phone}\n*Changamoto ya Afya:* ${issue}`;
-      
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-      
-      window.open(whatsappUrl, '_blank');
-    });
+    // Optional consultation form: bind only when the form exists on this page.
+    const consultationForm = document.getElementById('herbalConsultationForm');
+    if (consultationForm) {
+      consultationForm.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const nameField = document.getElementById('fullName');
+        const phoneField = document.getElementById('phoneNumber');
+        const issueField = document.getElementById('healthIssue');
+        if (!nameField || !phoneField || !issueField) {
+          console.error('Consultation form is missing one or more required fields.');
+          return;
+        }
+
+        const name = nameField.value.trim();
+        const phone = phoneField.value.trim();
+        const issue = issueField.value.trim();
+        if (!name || !phone || !issue) {
+          consultationForm.reportValidity?.();
+          return;
+        }
+
+        const whatsappNumber = '255620354744';
+        const message = `Hello A.P Herbal Care, naomba ushauri wa kiafya.\\n\\n*Jina:* ${name}\\n*Simu:* ${phone}\\n*Changamoto ya Afya:* ${issue}`;
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      });
+    }
   </script>
 </body>
 </html>       
