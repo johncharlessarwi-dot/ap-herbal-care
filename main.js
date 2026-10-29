@@ -6,27 +6,57 @@
 const navbar = document.getElementById('navbar');
 if (navbar) {
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) navbar.classList.add('scrolled');
-    else navbar.classList.remove('scrolled');
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 }
 
-// --- Mobile hamburger menu ---
+// --- Accessible mobile navigation ---
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 
 if (hamburger && navLinks) {
+  // Keep the menu's state available to assistive technology.
+  hamburger.setAttribute('aria-controls', navLinks.id || 'navLinks');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-label', 'Fungua menyu');
+
+  const setMenuOpen = (isOpen, { returnFocus = false } = {}) => {
+    navLinks.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Funga menyu' : 'Fungua menyu');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+
+    if (isOpen) {
+      const firstLink = navLinks.querySelector('a[href]');
+      firstLink?.focus();
+    } else if (returnFocus) {
+      hamburger.focus();
+    }
+  };
+
   hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    const isOpen = hamburger.getAttribute('aria-expanded') !== 'true';
+    setMenuOpen(isOpen);
   });
 
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+  // Close the menu after a visitor chooses a destination.
+  navLinks.querySelectorAll('a[href]').forEach(link => {
+    link.addEventListener('click', () => setMenuOpen(false));
   });
+
+  // Escape provides a predictable keyboard exit from the open menu.
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
+      setMenuOpen(false, { returnFocus: true });
+    }
+  });
+
+  // If the viewport changes to desktop while the menu is open, reset its state.
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && hamburger.getAttribute('aria-expanded') === 'true') {
+      setMenuOpen(false);
+    }
+  }, { passive: true });
 }
 
 // --- Current page nav highlighting (multi-page support) ---
@@ -46,53 +76,62 @@ function setActiveNav() {
 
     if ((isHome && isLinkHome) || (linkFile && linkFile === currentPath)) {
       link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
     }
   });
 }
 setActiveNav();
 
-// --- Scroll fade-in animations (progressive enhancement) ---
+// --- Scroll fade-in animations (for pages that have the elements) ---
 const fadeEls = document.querySelectorAll(
   '.service-card, .contact-card, .why-point, .about-text, .about-visual, .product-card'
 );
 
-if (fadeEls.length) {
+if (fadeEls.length && 'IntersectionObserver' in window) {
   fadeEls.forEach(el => el.classList.add('fade-in'));
 
-  if (typeof IntersectionObserver === 'undefined') {
-    // Keep content visible in older browsers and restricted webviews.
-    fadeEls.forEach(el => el.classList.add('visible'));
-  } else {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const siblings = Array.from(entry.target.parentElement.children);
-            const idx = siblings.indexOf(entry.target);
-            window.setTimeout(() => entry.target.classList.add('visible'), idx * 70);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const siblings = Array.from(entry.target.parentElement.children);
+          const idx = siblings.indexOf(entry.target);
+          window.setTimeout(() => entry.target.classList.add('visible'), idx * 70);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
 
-    fadeEls.forEach(el => observer.observe(el));
-  }
+  fadeEls.forEach(el => observer.observe(el));
+} else {
+  // Content remains visible in browsers without IntersectionObserver.
+  fadeEls.forEach(el => el.classList.add('visible'));
 }
 
 // --- Smooth active nav highlight on scroll (only on pages with sections) ---
 const sections = document.querySelectorAll('section[id], header[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
 
-if (sections.length && navAnchors.length && typeof IntersectionObserver !== 'undefined') {
+if (sections.length && navAnchors.length && 'IntersectionObserver' in window) {
   const sectionObserver = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          navAnchors.forEach(a => a.classList.remove('active'));
-          const match = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
-          if (match) match.classList.add('active');
+          navAnchors.forEach(anchor => {
+            anchor.classList.remove('active');
+            if (anchor.getAttribute('href')?.startsWith('#')) {
+              anchor.removeAttribute('aria-current');
+            }
+          });
+          const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          if (match) {
+            match.classList.add('active');
+            match.setAttribute('aria-current', 'location');
+          }
         }
       });
     },
@@ -101,7 +140,3 @@ if (sections.length && navAnchors.length && typeof IntersectionObserver !== 'und
 
   sections.forEach(section => sectionObserver.observe(section));
 }
-
-document.querySelectorAll('.nav-links a.active').forEach(() => {
-  // CSS provides the active state.
-});
