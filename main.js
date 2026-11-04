@@ -44,6 +44,14 @@ if (hamburger && navLinks) {
     link.addEventListener('click', () => setMenuOpen(false));
   });
 
+  // Close an open mobile menu when focus/click moves outside the navigation.
+  document.addEventListener('pointerdown', event => {
+    if (hamburger.getAttribute('aria-expanded') === 'true' &&
+        event.target instanceof Node && !hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+      setMenuOpen(false);
+    }
+  });
+
   // Escape provides a predictable keyboard exit from the open menu.
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && hamburger.getAttribute('aria-expanded') === 'true') {
