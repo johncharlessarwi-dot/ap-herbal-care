@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="assets/readme/project-motion.svg" width="100%" alt="A.P HERBAL CARE animated overview banner" />
+</div>
+
 # A.P Herbal Care – Static Website
 
 **Client:** A.P Herbal Care, Moshi, Tanzania  
