@@ -89,7 +89,8 @@ const fadeEls = document.querySelectorAll(
   '.service-card, .contact-card, .why-point, .about-text, .about-visual, .product-card'
 );
 
-if (fadeEls.length && 'IntersectionObserver' in window) {
+const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+if (fadeEls.length && 'IntersectionObserver' in window && !prefersReducedMotion) {
   fadeEls.forEach(el => el.classList.add('fade-in'));
 
   const observer = new IntersectionObserver(
