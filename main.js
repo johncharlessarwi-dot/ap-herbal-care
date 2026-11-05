@@ -130,14 +130,13 @@ if (sections.length && navAnchors.length && 'IntersectionObserver' in window) {
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          navAnchors.forEach(anchor => {
-            anchor.classList.remove('active');
-            if (anchor.getAttribute('href')?.startsWith('#')) {
-              anchor.removeAttribute('aria-current');
-            }
-          });
           const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          // Do not erase the current page indicator when no section link exists.
           if (match) {
+            navAnchors.forEach(anchor => {
+              anchor.classList.remove('active');
+              anchor.removeAttribute('aria-current');
+            });
             match.classList.add('active');
             match.setAttribute('aria-current', 'location');
           }
