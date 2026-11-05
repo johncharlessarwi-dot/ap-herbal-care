@@ -35,6 +35,7 @@ function runPage({ sectionMatch }) {
     constructor(callback) { onSections = callback; }
     observe() {}
   }
+  window.IntersectionObserver = IntersectionObserver;
   vm.runInNewContext(source, { document, window, IntersectionObserver });
   assert.equal(classes.has('active'), true, 'the current page starts active');
   onSections([{ isIntersecting: true, target: section }]);
