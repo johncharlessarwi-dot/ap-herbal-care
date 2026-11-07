@@ -11,3 +11,4 @@ test('product page avoids unverified immunity enhancement', () => { assert.doesN
 test('product page avoids anxiety treatment promise', () => { assert.doesNotMatch(page('products.html'), /kupunguza wasiwasi/i); });
 test('services page avoids guaranteed recovery journey', () => { assert.doesNotMatch(page('services.html'), /safari yako ya kupona/i); });
 test('contact menu button uses explicit type', () => { assert.match(page('contact.html'), /<button type="button" class="hamburger"/); });
+test('services menu button uses explicit type', () => { assert.match(page('services.html'), /<button type="button" class="hamburger"/); });
