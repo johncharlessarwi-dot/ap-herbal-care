@@ -23,3 +23,4 @@ test('contact page has safety information', () => { assert.match(page('contact.h
 test('notice discourages substitution for medical advice', () => { assert.match(page('index.html'), /mbadala wa ushauri wa mtaalamu wa afya/); });
 test('notice encourages discussion of interactions', () => { assert.match(page('products.html'), /mwingiliano na dawa/); });
 test('Netlify protects resource embedding', () => { assert.match(page('netlify.toml'), /Cross-Origin-Resource-Policy = "same-origin"/); });
+test('Netlify disallows legacy cross-domain policy', () => { assert.match(page('netlify.toml'), /X-Permitted-Cross-Domain-Policies = "none"/); });
