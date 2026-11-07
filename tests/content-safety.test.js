@@ -18,3 +18,4 @@ test('contact page exposes business WhatsApp', () => { assert.match(page('contac
 test('homepage has health information notice', () => { assert.match(page('index.html'), /class="health-notice" role="note"/); });
 test('services page has safety information', () => { assert.match(page('services.html'), /class="health-notice" role="note"/); });
 test('products page has safety information', () => { assert.match(page('products.html'), /class="health-notice" role="note"/); });
+test('about page has safety information', () => { assert.match(page('about.html'), /class="health-notice" role="note"/); });
