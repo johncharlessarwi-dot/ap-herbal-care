@@ -21,3 +21,4 @@ test('products page has safety information', () => { assert.match(page('products
 test('about page has safety information', () => { assert.match(page('about.html'), /class="health-notice" role="note"/); });
 test('contact page has safety information', () => { assert.match(page('contact.html'), /class="health-notice" role="note"/); });
 test('notice discourages substitution for medical advice', () => { assert.match(page('index.html'), /mbadala wa ushauri wa mtaalamu wa afya/); });
+test('notice encourages discussion of interactions', () => { assert.match(page('products.html'), /mwingiliano na dawa/); });
