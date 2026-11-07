@@ -15,3 +15,4 @@ test('services menu button uses explicit type', () => { assert.match(page('servi
 test('contact social link uses noreferrer', () => { assert.match(page('contact.html'), /target="_blank" rel="noopener noreferrer"/); });
 test('contact page exposes callable phone', () => { assert.match(page('contact.html'), /href="tel:\+255620354744"/); });
 test('contact page exposes business WhatsApp', () => { assert.match(page('contact.html'), /https:\/\/wa\.me\/255620354744/); });
+test('homepage has health information notice', () => { assert.match(page('index.html'), /class="health-notice" role="note"/); });
