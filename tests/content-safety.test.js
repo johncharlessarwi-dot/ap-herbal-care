@@ -13,3 +13,4 @@ test('services page avoids guaranteed recovery journey', () => { assert.doesNotM
 test('contact menu button uses explicit type', () => { assert.match(page('contact.html'), /<button type="button" class="hamburger"/); });
 test('services menu button uses explicit type', () => { assert.match(page('services.html'), /<button type="button" class="hamburger"/); });
 test('contact social link uses noreferrer', () => { assert.match(page('contact.html'), /target="_blank" rel="noopener noreferrer"/); });
+test('contact page exposes callable phone', () => { assert.match(page('contact.html'), /href="tel:\+255620354744"/); });
