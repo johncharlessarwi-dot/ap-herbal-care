@@ -19,3 +19,4 @@ test('homepage has health information notice', () => { assert.match(page('index.
 test('services page has safety information', () => { assert.match(page('services.html'), /class="health-notice" role="note"/); });
 test('products page has safety information', () => { assert.match(page('products.html'), /class="health-notice" role="note"/); });
 test('about page has safety information', () => { assert.match(page('about.html'), /class="health-notice" role="note"/); });
+test('contact page has safety information', () => { assert.match(page('contact.html'), /class="health-notice" role="note"/); });
