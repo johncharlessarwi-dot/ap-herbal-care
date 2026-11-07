@@ -24,3 +24,4 @@ test('notice discourages substitution for medical advice', () => { assert.match(
 test('notice encourages discussion of interactions', () => { assert.match(page('products.html'), /mwingiliano na dawa/); });
 test('Netlify protects resource embedding', () => { assert.match(page('netlify.toml'), /Cross-Origin-Resource-Policy = "same-origin"/); });
 test('Netlify disallows legacy cross-domain policy', () => { assert.match(page('netlify.toml'), /X-Permitted-Cross-Domain-Policies = "none"/); });
+test('safety notice has high-contrast background', () => { assert.match(page('style.css'), /\.health-notice\s*\{/); });
