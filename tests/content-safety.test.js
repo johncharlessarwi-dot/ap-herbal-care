@@ -9,3 +9,4 @@ test('homepage avoids absolute chemical-free claims', () => { assert.doesNotMatc
 test('homepage avoids unsupported cure promise', () => { assert.doesNotMatch(page('index.html'), /asili katika kuponya/i); });
 test('product page avoids unverified immunity enhancement', () => { assert.doesNotMatch(page('products.html'), /kuimarisha kinga ya mwili/i); });
 test('product page avoids anxiety treatment promise', () => { assert.doesNotMatch(page('products.html'), /kupunguza wasiwasi/i); });
+test('services page avoids guaranteed recovery journey', () => { assert.doesNotMatch(page('services.html'), /safari yako ya kupona/i); });
