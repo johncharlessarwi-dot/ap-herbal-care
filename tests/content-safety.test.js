@@ -22,3 +22,4 @@ test('about page has safety information', () => { assert.match(page('about.html'
 test('contact page has safety information', () => { assert.match(page('contact.html'), /class="health-notice" role="note"/); });
 test('notice discourages substitution for medical advice', () => { assert.match(page('index.html'), /mbadala wa ushauri wa mtaalamu wa afya/); });
 test('notice encourages discussion of interactions', () => { assert.match(page('products.html'), /mwingiliano na dawa/); });
+test('Netlify protects resource embedding', () => { assert.match(page('netlify.toml'), /Cross-Origin-Resource-Policy = "same-origin"/); });
