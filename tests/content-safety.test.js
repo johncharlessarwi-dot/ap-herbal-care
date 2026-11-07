@@ -8,3 +8,4 @@ test('site has a homepage', () => { assert.match(page('index.html'), /<html lang
 test('homepage avoids absolute chemical-free claims', () => { assert.doesNotMatch(page('index.html'), /Hakuna kemikali hatari/i); });
 test('homepage avoids unsupported cure promise', () => { assert.doesNotMatch(page('index.html'), /asili katika kuponya/i); });
 test('product page avoids unverified immunity enhancement', () => { assert.doesNotMatch(page('products.html'), /kuimarisha kinga ya mwili/i); });
+test('product page avoids anxiety treatment promise', () => { assert.doesNotMatch(page('products.html'), /kupunguza wasiwasi/i); });
