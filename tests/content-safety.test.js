@@ -45,3 +45,5 @@ test('Netlify config enables Content-Security-Policy', () => { assert.ok(page('n
 test('homepage avoids inline script execution', () => { assert.doesNotMatch(page('index.html'), /<script(?![^>]*\bsrc=)[^>]*>/i); });
 
 test('CSP restricts script execution to same origin', () => { assert.match(page('netlify.toml'), /script-src 'self'/); });
+
+test('CSP restricts native form posts to same origin', () => { assert.match(page('netlify.toml'), /form-action 'self'/); });
