@@ -35,3 +35,5 @@ test('products.html footer strips referrer for Facebook links', () => { assert.m
 test('contact.html footer strips referrer for Facebook links', () => { assert.match(page('contact.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
 
 test('Netlify config enables Cross-Origin-Opener-Policy', () => { assert.ok(page('netlify.toml').includes("Cross-Origin-Opener-Policy = \"same-origin\"")); });
+
+test('Netlify config enables X-DNS-Prefetch-Control', () => { assert.ok(page('netlify.toml').includes("X-DNS-Prefetch-Control = \"off\"")); });
