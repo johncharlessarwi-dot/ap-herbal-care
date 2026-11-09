@@ -16,7 +16,8 @@ const navLinks = document.getElementById('navLinks');
 
 if (hamburger && navLinks) {
   // Keep the menu's state available to assistive technology.
-  hamburger.setAttribute('aria-controls', navLinks.id || 'navLinks');
+  if (!navLinks.id) navLinks.id = 'navLinks';
+  hamburger.setAttribute('aria-controls', navLinks.id);
   hamburger.setAttribute('aria-expanded', 'false');
   hamburger.setAttribute('aria-label', 'Fungua menyu');
 
