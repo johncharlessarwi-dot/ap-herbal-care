@@ -131,6 +131,7 @@ if (sections.length && navAnchors.length && 'IntersectionObserver' in window) {
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(entry.target.id)) return;
           const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
           // Do not erase the current page indicator when no section link exists.
           if (match) {
