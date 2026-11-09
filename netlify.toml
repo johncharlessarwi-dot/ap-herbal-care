@@ -21,4 +21,5 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Permitted-Cross-Domain-Policies = "none"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-DNS-Prefetch-Control = "off"
     Cross-Origin-Opener-Policy = "same-origin"
