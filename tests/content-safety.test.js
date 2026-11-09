@@ -67,3 +67,5 @@ test('products.html font request strips referrer', () => { assert.match(page('pr
 test('contact.html limits document referrer disclosure', () => { assert.match(page('contact.html'), /<meta name="referrer" content="no-referrer"/); });
 
 test('contact.html font request strips referrer', () => { assert.match(page('contact.html'), /fonts\.googleapis\.com\/css2[^\n]+referrerpolicy="no-referrer"/); });
+
+test('all published pages avoid inline JavaScript execution', () => { for (const name of ['index.html','about.html','services.html','products.html','contact.html']) assert.doesNotMatch(page(name), /<script(?![^>]*\bsrc=)[^>]*>/i); });
