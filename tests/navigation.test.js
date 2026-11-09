@@ -53,3 +53,5 @@ test('a matching section link is marked as the current location', () => {
   assert.equal(classes.has('active'), true);
   assert.equal(attributes.get('aria-current'), 'location');
 });
+
+test('mobile navigation ensures controlled element has an ID', () => { assert.match(source, /if \(!navLinks\.id\) navLinks\.id = 'navLinks'/); });
