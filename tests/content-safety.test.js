@@ -43,3 +43,5 @@ test('Netlify config enables Strict-Transport-Security', () => { assert.ok(page(
 test('Netlify config enables Content-Security-Policy', () => { assert.ok(page('netlify.toml').includes("Content-Security-Policy = \"base-uri 'self'; object-src 'none'; frame-ancestors 'none'\"")); });
 
 test('homepage avoids inline script execution', () => { assert.doesNotMatch(page('index.html'), /<script(?![^>]*\bsrc=)[^>]*>/i); });
+
+test('CSP restricts script execution to same origin', () => { assert.match(page('netlify.toml'), /script-src 'self'/); });
