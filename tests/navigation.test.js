@@ -55,3 +55,5 @@ test('a matching section link is marked as the current location', () => {
 });
 
 test('mobile navigation ensures controlled element has an ID', () => { assert.match(source, /if \(!navLinks\.id\) navLinks\.id = 'navLinks'/); });
+
+test('animation callback tolerates detached DOM nodes', () => { assert.match(source, /entry\.target\.parentElement\?\.children/); });
