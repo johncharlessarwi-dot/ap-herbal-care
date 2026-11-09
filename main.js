@@ -106,7 +106,7 @@ if (fadeEls.length && 'IntersectionObserver' in window && !prefersReducedMotion)
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const siblings = Array.from(entry.target.parentElement.children);
+          const siblings = Array.from(entry.target.parentElement?.children || []);
           const idx = siblings.indexOf(entry.target);
           window.setTimeout(() => entry.target.classList.add('visible'), idx * 70);
           observer.unobserve(entry.target);
