@@ -37,3 +37,5 @@ test('contact.html footer strips referrer for Facebook links', () => { assert.ma
 test('Netlify config enables Cross-Origin-Opener-Policy', () => { assert.ok(page('netlify.toml').includes("Cross-Origin-Opener-Policy = \"same-origin\"")); });
 
 test('Netlify config enables X-DNS-Prefetch-Control', () => { assert.ok(page('netlify.toml').includes("X-DNS-Prefetch-Control = \"off\"")); });
+
+test('Netlify config enables Strict-Transport-Security', () => { assert.ok(page('netlify.toml').includes("Strict-Transport-Security = \"max-age=31536000\"")); });
