@@ -27,3 +27,5 @@ test('Netlify disallows legacy cross-domain policy', () => { assert.match(page('
 test('safety notice has high-contrast background', () => { assert.match(page('style.css'), /\.health-notice\s*\{/); });
 
 test('index.html footer strips referrer for external Facebook links', () => { assert.match(page('index.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
+
+test('about.html footer strips referrer for external Facebook links', () => { assert.match(page('about.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
