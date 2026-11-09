@@ -25,3 +25,5 @@ test('notice encourages discussion of interactions', () => { assert.match(page('
 test('Netlify protects resource embedding', () => { assert.match(page('netlify.toml'), /Cross-Origin-Resource-Policy = "same-origin"/); });
 test('Netlify disallows legacy cross-domain policy', () => { assert.match(page('netlify.toml'), /X-Permitted-Cross-Domain-Policies = "none"/); });
 test('safety notice has high-contrast background', () => { assert.match(page('style.css'), /\.health-notice\s*\{/); });
+
+test('index.html footer strips referrer for external Facebook links', () => { assert.match(page('index.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
