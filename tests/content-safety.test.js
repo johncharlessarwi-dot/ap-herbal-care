@@ -25,3 +25,47 @@ test('notice encourages discussion of interactions', () => { assert.match(page('
 test('Netlify protects resource embedding', () => { assert.match(page('netlify.toml'), /Cross-Origin-Resource-Policy = "same-origin"/); });
 test('Netlify disallows legacy cross-domain policy', () => { assert.match(page('netlify.toml'), /X-Permitted-Cross-Domain-Policies = "none"/); });
 test('safety notice has high-contrast background', () => { assert.match(page('style.css'), /\.health-notice\s*\{/); });
+
+test('index.html footer strips referrer for external Facebook links', () => { assert.match(page('index.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
+
+test('about.html footer strips referrer for external Facebook links', () => { assert.match(page('about.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
+
+test('products.html footer strips referrer for Facebook links', () => { assert.match(page('products.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
+
+test('contact.html footer strips referrer for Facebook links', () => { assert.match(page('contact.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
+
+test('Netlify config enables Cross-Origin-Opener-Policy', () => { assert.ok(page('netlify.toml').includes("Cross-Origin-Opener-Policy = \"same-origin\"")); });
+
+test('Netlify config enables X-DNS-Prefetch-Control', () => { assert.ok(page('netlify.toml').includes("X-DNS-Prefetch-Control = \"off\"")); });
+
+test('Netlify config enables Strict-Transport-Security', () => { assert.ok(page('netlify.toml').includes("Strict-Transport-Security = \"max-age=31536000\"")); });
+
+test('Netlify config enables Content-Security-Policy', () => { assert.match(page('netlify.toml'), /Content-Security-Policy = "base-uri 'self'; object-src 'none'; frame-ancestors 'none'/); });
+
+test('homepage avoids inline script execution', () => { assert.doesNotMatch(page('index.html'), /<script(?![^>]*\bsrc=)[^>]*>/i); });
+
+test('CSP restricts script execution to same origin', () => { assert.match(page('netlify.toml'), /script-src 'self'/); });
+
+test('CSP restricts native form posts to same origin', () => { assert.match(page('netlify.toml'), /form-action 'self'/); });
+
+test('index.html limits document referrer disclosure', () => { assert.match(page('index.html'), /<meta name="referrer" content="no-referrer"/); });
+
+test('index.html font request strips referrer', () => { assert.match(page('index.html'), /fonts\.googleapis\.com\/css2[^\n]+referrerpolicy="no-referrer"/); });
+
+test('about.html limits document referrer disclosure', () => { assert.match(page('about.html'), /<meta name="referrer" content="no-referrer"/); });
+
+test('about.html font request strips referrer', () => { assert.match(page('about.html'), /fonts\.googleapis\.com\/css2[^\n]+referrerpolicy="no-referrer"/); });
+
+test('services.html limits document referrer disclosure', () => { assert.match(page('services.html'), /<meta name="referrer" content="no-referrer"/); });
+
+test('services.html font request strips referrer', () => { assert.match(page('services.html'), /fonts\.googleapis\.com\/css2[^\n]+referrerpolicy="no-referrer"/); });
+
+test('products.html limits document referrer disclosure', () => { assert.match(page('products.html'), /<meta name="referrer" content="no-referrer"/); });
+
+test('products.html font request strips referrer', () => { assert.match(page('products.html'), /fonts\.googleapis\.com\/css2[^\n]+referrerpolicy="no-referrer"/); });
+
+test('contact.html limits document referrer disclosure', () => { assert.match(page('contact.html'), /<meta name="referrer" content="no-referrer"/); });
+
+test('contact.html font request strips referrer', () => { assert.match(page('contact.html'), /fonts\.googleapis\.com\/css2[^\n]+referrerpolicy="no-referrer"/); });
+
+test('all published pages avoid inline JavaScript execution', () => { for (const name of ['index.html','about.html','services.html','products.html','contact.html']) assert.doesNotMatch(page(name), /<script(?![^>]*\bsrc=)[^>]*>/i); });

@@ -16,7 +16,8 @@ const navLinks = document.getElementById('navLinks');
 
 if (hamburger && navLinks) {
   // Keep the menu's state available to assistive technology.
-  hamburger.setAttribute('aria-controls', navLinks.id || 'navLinks');
+  if (!navLinks.id) navLinks.id = 'navLinks';
+  hamburger.setAttribute('aria-controls', navLinks.id);
   hamburger.setAttribute('aria-expanded', 'false');
   hamburger.setAttribute('aria-label', 'Fungua menyu');
 
@@ -105,7 +106,7 @@ if (fadeEls.length && 'IntersectionObserver' in window && !prefersReducedMotion)
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const siblings = Array.from(entry.target.parentElement.children);
+          const siblings = Array.from(entry.target.parentElement?.children || []);
           const idx = siblings.indexOf(entry.target);
           window.setTimeout(() => entry.target.classList.add('visible'), idx * 70);
           observer.unobserve(entry.target);
@@ -130,6 +131,7 @@ if (sections.length && navAnchors.length && 'IntersectionObserver' in window) {
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(entry.target.id)) return;
           const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
           // Do not erase the current page indicator when no section link exists.
           if (match) {
