@@ -47,3 +47,5 @@ test('homepage avoids inline script execution', () => { assert.doesNotMatch(page
 test('CSP restricts script execution to same origin', () => { assert.match(page('netlify.toml'), /script-src 'self'/); });
 
 test('CSP restricts native form posts to same origin', () => { assert.match(page('netlify.toml'), /form-action 'self'/); });
+
+test('index.html limits document referrer disclosure', () => { assert.match(page('index.html'), /<meta name="referrer" content="no-referrer"/); });
