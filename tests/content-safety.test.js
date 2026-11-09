@@ -53,3 +53,5 @@ test('index.html limits document referrer disclosure', () => { assert.match(page
 test('index.html font request strips referrer', () => { assert.match(page('index.html'), /fonts\.googleapis\.com\/css2[^\n]+referrerpolicy="no-referrer"/); });
 
 test('about.html limits document referrer disclosure', () => { assert.match(page('about.html'), /<meta name="referrer" content="no-referrer"/); });
+
+test('about.html font request strips referrer', () => { assert.match(page('about.html'), /fonts\.googleapis\.com\/css2[^\n]+referrerpolicy="no-referrer"/); });
