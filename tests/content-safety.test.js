@@ -41,3 +41,5 @@ test('Netlify config enables X-DNS-Prefetch-Control', () => { assert.ok(page('ne
 test('Netlify config enables Strict-Transport-Security', () => { assert.ok(page('netlify.toml').includes("Strict-Transport-Security = \"max-age=31536000\"")); });
 
 test('Netlify config enables Content-Security-Policy', () => { assert.ok(page('netlify.toml').includes("Content-Security-Policy = \"base-uri 'self'; object-src 'none'; frame-ancestors 'none'\"")); });
+
+test('homepage avoids inline script execution', () => { assert.doesNotMatch(page('index.html'), /<script(?![^>]*\bsrc=)[^>]*>/i); });
