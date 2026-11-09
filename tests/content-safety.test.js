@@ -31,3 +31,5 @@ test('index.html footer strips referrer for external Facebook links', () => { as
 test('about.html footer strips referrer for external Facebook links', () => { assert.match(page('about.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
 
 test('products.html footer strips referrer for Facebook links', () => { assert.match(page('products.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
+
+test('contact.html footer strips referrer for Facebook links', () => { assert.match(page('contact.html'), /target="_blank" rel="noopener noreferrer">Facebook/); });
