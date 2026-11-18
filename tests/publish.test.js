@@ -44,11 +44,26 @@ test('both hosts publish only the build output and enforce the same resource pol
   assert.equal(globalHeaders.find(header => header.key === 'Content-Security-Policy').value, policy);
 });
 
-test('publish leaves an existing destination unchanged', t => {
+test('a repeat build refreshes allowlisted files without modifying linked files', t => {
+  const directory = tempDirectory(t);
+  const output = path.join(directory, 'dist');
+  const fixture = path.join(directory, 'fixture.css');
+  fs.mkdirSync(output);
+  fs.writeFileSync(fixture, 'old output');
+  fs.linkSync(fixture, path.join(output, 'style.css'));
+
+  buildSite(root, output);
+  buildSite(root, output);
+
+  assert.equal(fs.readFileSync(fixture, 'utf8'), 'old output');
+  assert.deepEqual(fs.readFileSync(path.join(output, 'style.css')), fs.readFileSync(path.join(root, 'style.css')));
+});
+
+test('publish leaves unexpected files in an existing destination untouched', t => {
   const output = tempDirectory(t);
   fs.writeFileSync(path.join(output, 'old-file.txt'), 'stale output');
 
-  assert.throws(() => buildSite(root, output), { code: 'EEXIST' });
+  assert.throws(() => buildSite(root, output), /The publish directory contains unlisted items/);
   assert.deepEqual(fs.readdirSync(output), ['old-file.txt']);
 });
 

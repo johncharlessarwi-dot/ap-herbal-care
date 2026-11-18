@@ -55,7 +55,7 @@ Git-linked Vercel deployments use the same build and `dist/` output via `vercel.
 
 ### Local checks
 
-Run `node --check main.js && node --test tests/*.test.js` before publishing. The build uses an explicit allowlist in `scripts/build-site.js`; update it when adding a public asset. The destination must not already exist. To repeat a local build, use `node scripts/build-site.js <new-output-directory>`.
+Run `node --check main.js && node --test tests/*.test.js` before publishing. The build uses an explicit allowlist in `scripts/build-site.js`; update it when adding a public asset. Repeat builds can reuse `dist/` if it contains only allowlisted site files. To build elsewhere, use `node scripts/build-site.js <output-directory>`.
 
 ### Custom Domain (optional)
 - In Netlify: Site settings → Domain management → Add custom domain
