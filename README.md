@@ -28,11 +28,10 @@ ap-herbal-care/
 
 ## How to Deploy on Netlify
 
-### Option 1: Drag & Drop (easiest for beginners)
-1. Go to [netlify.com](https://netlify.com) and log in
-2. Go to **Sites → Add new site → Deploy manually**
-3. Drag the entire `ap-herbal-care/` folder into the box
-4. Done! You get a live URL instantly
+### Option 1: Drag & Drop (preview only)
+1. Use Node.js 22 and run `node scripts/build-site.js` in the repository root.
+2. In Netlify, go to **Sites → Add new site → Deploy manually**.
+3. Upload only the generated `dist/` directory, never the repository root. Manual uploads do not apply the response headers in `netlify.toml`; use the Git-linked deploy for production.
 
 ### Option 2: Via GitHub (recommended for version control)
 1. Create a new repo on GitHub: `ap-herbal-care`
@@ -47,8 +46,12 @@ ap-herbal-care/
    ```
 3. Go to Netlify → **Add new site → Import from Git**
 4. Connect GitHub → Select the repo
-5. Build settings: leave blank (static site, no build command)
-6. Click **Deploy site**
+5. Use the build command and publish directory from `netlify.toml`: `node scripts/build-site.js` and `dist`.
+6. Click **Deploy site**.
+
+### Local checks
+
+Run `node --check main.js && node --test tests/*.test.js` before publishing. The build uses an explicit allowlist in `scripts/build-site.js`; update it when adding a public asset. The destination must not already exist. To repeat a local build, use `node scripts/build-site.js <new-output-directory>`.
 
 ### Custom Domain (optional)
 - In Netlify: Site settings → Domain management → Add custom domain

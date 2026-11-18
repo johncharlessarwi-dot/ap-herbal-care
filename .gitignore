@@ -1,0 +1,8 @@
+/dist/
+
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
