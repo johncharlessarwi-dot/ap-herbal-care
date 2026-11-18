@@ -59,3 +59,37 @@ test('mobile navigation ensures controlled element has an ID', () => { assert.ma
 test('animation callback tolerates detached DOM nodes', () => { assert.match(source, /entry\.target\.parentElement\?\.children/); });
 
 test('section selector rejects malformed DOM identifiers', () => { assert.match(source, /if \(!\/\^\[A-Za-z\]/); });
+
+test('desktop layout releases scroll lock when the mobile toggle becomes hidden', () => {
+  const attrs = new Map();
+  const events = {};
+  const menu = {
+    id: 'navLinks', classList: { toggle() {} },
+    querySelectorAll: () => [], querySelector: () => null
+  };
+  const button = {
+    setAttribute: (key, value) => attrs.set(key, value),
+    getAttribute: key => attrs.get(key),
+    addEventListener: (type, fn) => { events[type] = fn; }
+  };
+  const document = {
+    body: { style: {} },
+    getElementById: id => ({ hamburger: button, navLinks: menu })[id],
+    addEventListener() {}, querySelectorAll: () => []
+  };
+  let display = 'flex';
+  const window = {
+    innerWidth: 620,
+    addEventListener: (type, fn) => { events[type] = fn; },
+    getComputedStyle: () => ({ display })
+  };
+  vm.runInNewContext(source, { document, window });
+  events.click();
+  events.resize();
+  assert.equal(attrs.get('aria-expanded'), 'true');
+  assert.equal(document.body.style.overflow, 'hidden');
+  display = 'none';
+  events.resize();
+  assert.equal(attrs.get('aria-expanded'), 'false');
+  assert.equal(document.body.style.overflow, '');
+});
