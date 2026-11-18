@@ -2,7 +2,11 @@
 # Netlify will serve index.html, about.html, services.html, products.html, contact.html directly
 
 [build]
-  publish = "."
+  command = "node scripts/build-site.js"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
 
 # Optional: pretty 404 handling (uncomment if you add a 404.html later)
 # [[redirects]]
