@@ -48,6 +48,22 @@ test('CSP restricts script execution to same origin', () => { assert.match(page(
 
 test('CSP restricts native form posts to same origin', () => { assert.match(page('netlify.toml'), /form-action 'self'/); });
 
+test('CSP denies unspecified resources and permits only the site styles, images, and font hosts', () => {
+  const [, policy] = page('netlify.toml').match(/^\s*Content-Security-Policy = "([^"]+)"/m);
+  const directives = new Map(policy.split(';').map(directive => {
+    const [name, ...sources] = directive.trim().split(/\s+/);
+    return [name, sources];
+  }));
+
+  assert.deepEqual(directives.get('default-src'), ["'none'"]);
+  assert.deepEqual(directives.get('script-src'), ["'self'"]);
+  assert.deepEqual(directives.get('connect-src'), ["'none'"]);
+  assert.deepEqual(directives.get('style-src-elem'), ["'self'", 'https://fonts.googleapis.com']);
+  assert.deepEqual(directives.get('style-src-attr'), ["'unsafe-inline'"]);
+  assert.deepEqual(directives.get('font-src'), ['https://fonts.gstatic.com']);
+  assert.deepEqual(directives.get('img-src'), ["'self'", 'data:']);
+});
+
 test('index.html limits document referrer disclosure', () => { assert.match(page('index.html'), /<meta name="referrer" content="no-referrer"/); });
 
 test('index.html font request strips referrer', () => { assert.match(page('index.html'), /fonts\.googleapis\.com\/css2[^\n]+referrerpolicy="no-referrer"/); });
