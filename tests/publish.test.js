@@ -30,26 +30,11 @@ test('publish output contains only the public pages, resources, and linked image
   assert.deepEqual(fs.readdirSync(path.join(output, 'images')).sort(), [...images].sort());
 });
 
-test('a repeat build refreshes allowlisted files without modifying linked files', t => {
-  const directory = tempDirectory(t);
-  const output = path.join(directory, 'dist');
-  const fixture = path.join(directory, 'fixture.css');
-  fs.mkdirSync(output);
-  fs.writeFileSync(fixture, 'old output');
-  fs.linkSync(fixture, path.join(output, 'style.css'));
-
-  buildSite(root, output);
-  buildSite(root, output);
-
-  assert.equal(fs.readFileSync(fixture, 'utf8'), 'old output');
-  assert.deepEqual(fs.readFileSync(path.join(output, 'style.css')), fs.readFileSync(path.join(root, 'style.css')));
-});
-
-test('publish leaves unexpected files in an existing destination untouched', t => {
+test('publish leaves an existing destination unchanged', t => {
   const output = tempDirectory(t);
   fs.writeFileSync(path.join(output, 'old-file.txt'), 'stale output');
 
-  assert.throws(() => buildSite(root, output), /The publish directory contains unlisted items/);
+  assert.throws(() => buildSite(root, output), { code: 'EEXIST' });
   assert.deepEqual(fs.readdirSync(output), ['old-file.txt']);
 });
 
