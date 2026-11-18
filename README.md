@@ -49,10 +49,6 @@ ap-herbal-care/
 5. Use the build command and publish directory from `netlify.toml`: `node scripts/build-site.js` and `dist`.
 6. Click **Deploy site**.
 
-### Vercel
-
-Git-linked Vercel deployments use the same build and `dist/` output via `vercel.json`. Keep the content security policy in `vercel.json` and `netlify.toml` in sync.
-
 ### Local checks
 
 Run `node --check main.js && node --test tests/*.test.js` before publishing. The build uses an explicit allowlist in `scripts/build-site.js`; update it when adding a public asset. Repeat builds can reuse `dist/` if it contains only allowlisted site files. To build elsewhere, use `node scripts/build-site.js <output-directory>`.

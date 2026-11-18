@@ -30,20 +30,6 @@ test('publish output contains only the public pages, resources, and linked image
   assert.deepEqual(fs.readdirSync(path.join(output, 'images')).sort(), [...images].sort());
 });
 
-test('both hosts publish only the build output and enforce the same resource policy', () => {
-  const netlify = fs.readFileSync(path.join(root, 'netlify.toml'), 'utf8');
-  const vercel = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
-  const [, command, output] = netlify.match(/^\[build\]\s+command = "([^"]+)"\s+publish = "([^"]+)"/m);
-  const [, policy] = netlify.match(/^\s*Content-Security-Policy = "([^"]+)"/m);
-  const globalHeaders = vercel.headers.find(rule => rule.source === '/(.*)').headers;
-
-  assert.equal(command, 'node scripts/build-site.js');
-  assert.equal(output, 'dist');
-  assert.equal(vercel.buildCommand, command);
-  assert.equal(vercel.outputDirectory, output);
-  assert.equal(globalHeaders.find(header => header.key === 'Content-Security-Policy').value, policy);
-});
-
 test('a repeat build refreshes allowlisted files without modifying linked files', t => {
   const directory = tempDirectory(t);
   const output = path.join(directory, 'dist');
