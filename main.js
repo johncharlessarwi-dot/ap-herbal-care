@@ -62,7 +62,7 @@ if (hamburger && navLinks) {
 
   // If the viewport changes to desktop while the menu is open, reset its state.
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && hamburger.getAttribute('aria-expanded') === 'true') {
+    if (hamburger.getAttribute('aria-expanded') === 'true' && window.getComputedStyle(hamburger).display === 'none') {
       setMenuOpen(false);
     }
   }, { passive: true });
