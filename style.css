@@ -753,7 +753,13 @@ h3 { font-size: 1.2rem; }
     gap: 32px;
     z-index: 99;
   }
-  .nav-links.open { display: flex; }
+  .nav-links.open {
+    display: flex;
+    overflow-y: auto;
+    justify-content: safe center;
+    padding: 64px 16px 24px;
+  }
+  .nav-links.open li { flex-shrink: 0; }
   .nav-links a { font-size: 1.3rem; color: var(--white) !important; }
   .hamburger { display: flex; z-index: 100; }
   .services-grid { grid-template-columns: 1fr; }
